@@ -1,0 +1,40 @@
+﻿@page
+@model Web.Pages.CentrosModel
+@{
+    ViewData["Title"] = "Centros de salud";
+}
+
+<h1>Centros de salud</h1>
+
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+else if (Model.Centros.Count == 0)
+{
+    <p>No hay centros de salud cargados.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Localidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var centro in Model.Centros)
+            {
+                <tr>
+                    <td>@centro.Codigo</td>
+                    <td>@centro.Nombre</td>
+                    <td>@centro.Direccion</td>
+                    <td>@centro.Localidad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
