@@ -1,0 +1,36 @@
+﻿@page
+@model Web.Pages.EspecialidadesModel
+@{
+    ViewData["Title"] = "Especialidades";
+}
+
+<h1>Especialidades</h1>
+
+@if (Model.Error != null)
+{
+    <div class="alert alert-danger">@Model.Error</div>
+}
+else if (Model.Especialidades.Count == 0)
+{
+    <p>No hay especialidades cargadas.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var especialidad in Model.Especialidades)
+            {
+                <tr>
+                    <td>@especialidad.Codigo</td>
+                    <td>@especialidad.Descripcion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
