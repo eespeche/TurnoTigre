@@ -1,4 +1,4 @@
-using Dominio;
+Ôªøusing Dominio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Negocio;
@@ -9,53 +9,55 @@ namespace Web.Pages
     public class RegistroModel : PageModel
     {
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu nombre.")]
+        [Required(ErrorMessage = "Ingres√° tu nombre.")]
         public string Nombre { get; set; } = string.Empty;  
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu apellido.")]
+        [Required(ErrorMessage = "Ingres√° tu apellido.")]
         public string Apellido { get; set; } = string.Empty;  
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu DNI.")]
-        [RegularExpression("[0-9]{7,8}", ErrorMessage = "El DNI debe tener 7 u 8 n˙meros, sin puntos.")]
+        [Required(ErrorMessage = "Ingres√° tu DNI.")]
+        [RegularExpression("[0-9]{7,8}", ErrorMessage = "El DNI debe tener 7 u 8 n√∫meros, sin puntos.")]
         public string Dni { get; set; } = string.Empty;
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu fecha de nacimiento.")]
-        public DateTime? FechaNacimiento { get; set; }         
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Ingres√° tu fecha de nacimiento.")]
+        public DateTime? FechaNacimiento { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "Seleccion· el sexo.")]
+        [Required(ErrorMessage = "Seleccion√° el sexo.")]
         public string Sexo { get; set; } = string.Empty;       
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu localidad.")]
+        [Required(ErrorMessage = "Ingres√° tu localidad.")]
         public string Localidad { get; set; } = string.Empty;     
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· la calle.")]
+        [Required(ErrorMessage = "Ingres√° la calle.")]
         public string Calle { get; set; } = string.Empty;     
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· la altura.")]
+        [Required(ErrorMessage = "Ingres√° la altura.")]
         public string Altura { get; set; } = string.Empty;          
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· un telÈfono.")]
+        [Required(ErrorMessage = "Ingres√° un tel√©fono.")]
         public string Telefono { get; set; } = string.Empty;       
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· tu correo.")]
-        [EmailAddress(ErrorMessage = "El correo no es v·lido.")]
-        public string Correo { get; set; } = string.Empty;      
+        [Required(ErrorMessage = "Ingres√° tu correo.")]
+        [EmailAddress(ErrorMessage = "El correo no es v√°lido.")]
+        public string Correo { get; set; } = string.Empty;
 
         [BindProperty]
-        [Required(ErrorMessage = "Ingres· una contraseÒa.")]
-        public string Contrasena { get; set; } = string.Empty;   
+        [Required(ErrorMessage = "Ingres√° una contrase√±a.")]
+        [MinLength(8, ErrorMessage = "La contrase√±a debe tener al menos 8 caracteres.")]
+        public string Contrasena { get; set; } = string.Empty;
 
         [BindProperty]
-        [Compare(nameof(Contrasena), ErrorMessage = "Las contraseÒas no coinciden.")]
+        [Compare(nameof(Contrasena), ErrorMessage = "Las contrase√±as no coinciden.")]
         public string Confirmacion { get; set; } = string.Empty;   
 
         public string? Error { get; set; }

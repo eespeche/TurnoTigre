@@ -15,111 +15,123 @@
         <div class="alert alert-danger">@Model.Error</div>
     }
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <form method="post">
         <div class="tt-register-grid">
 
             <div class="tt-field">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" name="Nombre"
+                <label asp-for="Nombre">Nombre</label>
+                <input asp-for="Nombre"
                        type="text" autocomplete="given-name"
                        maxlength="100"
                        placeholder="Ej.: Maria"
                        required />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="Apellido">Apellido</label>
-                <input id="Apellido" name="Apellido"
+                <label asp-for="Apellido">Apellido</label>
+                <input asp-for="Apellido"
                        type="text" autocomplete="family-name"
                        maxlength="100"
                        placeholder="Ej.: Perez"
                        required />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="dni">Número de DNI</label>
-                <input id="dni" name="Dni"
+                <label asp-for="Dni">Número de DNI</label>
+                <input asp-for="Dni"
                        type="text" inputmode="numeric"
                        pattern="[0-9]{7,8}" maxlength="8"
                        title="Ingresá entre 7 y 8 números, sin puntos"
                        placeholder="Sin puntos" required />
+                <span asp-validation-for="Dni" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="fechaNacimiento">Fecha de nacimiento</label>
-                <input id="fechaNacimiento" name="FechaNacimiento"
+                <label asp-for="FechaNacimiento">Fecha de nacimiento</label>
+                <input asp-for="FechaNacimiento"
                        type="date" autocomplete="bday"
                        required />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="sexo">Sexo</label>
-                <select id="sexo" name="Sexo" required>
+                <label asp-for="Sexo">Sexo</label>
+                <select asp-for="Sexo" required>
                     <option value="">Seleccioná...</option>
                     <option value="Femenino">Femenino</option>
                     <option value="Masculino">Masculino</option>
                     <option value="X">X</option>
                 </select>
+                <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="localidad">Localidad</label>
-                <input id="localidad" name="Localidad"
+                <label asp-for="Localidad">Localidad</label>
+                <input asp-for="Localidad"
                        type="text" maxlength="100"
                        placeholder="Ej.: Benavídez" required />
+                <span asp-validation-for="Localidad" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="calle">Calle</label>
-                <input id="calle" name="Calle"
-                       type="text" 
+                <label asp-for="Calle">Calle</label>
+                <input asp-for="Calle"
+                       type="text"
                        maxlength="100"
                        placeholder="Ej.: Av. Liniers"
                        required />
+                <span asp-validation-for="Calle" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="altura">Altura</label>
-                <input id="altura" name="Altura"
+                <label asp-for="Altura">Altura</label>
+                <input asp-for="Altura"
                        type="text"
                        inputmode="numeric"
                        maxlength="10"
                        placeholder="Ej.: 2840"
                        required />
+                <span asp-validation-for="Altura" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="telefono">Teléfono</label>
-                <input id="telefono" name="Telefono"
+                <label asp-for="Telefono">Teléfono</label>
+                <input asp-for="Telefono"
                        type="tel" autocomplete="tel"
                        maxlength="20" required />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="correo">Correo electrónico</label>
-                <input id="correo" name="Correo"
+                <label asp-for="Correo">Correo electrónico</label>
+                <input asp-for="Correo"
                        type="email" autocomplete="email"
                        maxlength="100"
                        placeholder="nombre@correo.com"
                        required />
+                <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="contrasena">Contraseña</label>
-                <input id="contrasena" name="Contrasena"
+                <label asp-for="Contrasena">Contraseña</label>
+                <input asp-for="Contrasena"
                        type="password"
                        autocomplete="new-password"
                        required />
+                <span asp-validation-for="Contrasena" class="text-danger"></span>
             </div>
 
             <div class="tt-field">
-                <label for="confirmacion">Confirmar contraseña</label>
-                <input id="confirmacion" name="Confirmacion"
+                <label asp-for="Confirmacion">Confirmar contraseña</label>
+                <input asp-for="Confirmacion"
                        type="password"
                        autocomplete="new-password"
                        required />
+                <span asp-validation-for="Confirmacion" class="text-danger"></span>
             </div>
         </div>
 
