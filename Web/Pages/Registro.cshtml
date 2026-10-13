@@ -10,8 +10,34 @@
         Necesitás tener domicilio en el partido de Tigre.
     </p>
 
+    @if (Model.Error != null)
+    {
+        <div class="alert alert-danger">@Model.Error</div>
+    }
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <form method="post">
         <div class="tt-register-grid">
+
+            <div class="tt-field">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="Nombre"
+                       type="text" autocomplete="given-name"
+                       maxlength="100"
+                       placeholder="Ej.: Maria"
+                       required />
+            </div>
+
+            <div class="tt-field">
+                <label for="Apellido">Apellido</label>
+                <input id="Apellido" name="Apellido"
+                       type="text" autocomplete="family-name"
+                       maxlength="100"
+                       placeholder="Ej.: Perez"
+                       required />
+            </div>
+
             <div class="tt-field">
                 <label for="dni">Número de DNI</label>
                 <input id="dni" name="Dni"
@@ -22,12 +48,20 @@
             </div>
 
             <div class="tt-field">
-                <label for="nombreCompleto">Apellido y nombre</label>
-                <input id="nombreCompleto" name="NombreCompleto"
-                       type="text" autocomplete="name"
-                       maxlength="200"
-                       placeholder="Ej.: Pérez, Ana María"
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <input id="fechaNacimiento" name="FechaNacimiento"
+                       type="date" autocomplete="bday"
                        required />
+            </div>
+
+            <div class="tt-field">
+                <label for="sexo">Sexo</label>
+                <select id="sexo" name="Sexo" required>
+                    <option value="">Seleccioná...</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="X">X</option>
+                </select>
             </div>
 
             <div class="tt-field">
@@ -38,11 +72,21 @@
             </div>
 
             <div class="tt-field">
-                <label for="domicilio">Calle y altura</label>
-                <input id="domicilio" name="Domicilio"
-                       type="text" autocomplete="address-line1"
-                       maxlength="200"
-                       placeholder="Ej.: Av. Liniers 1240"
+                <label for="calle">Calle</label>
+                <input id="calle" name="Calle"
+                       type="text" 
+                       maxlength="100"
+                       placeholder="Ej.: Av. Liniers"
+                       required />
+            </div>
+
+            <div class="tt-field">
+                <label for="altura">Altura</label>
+                <input id="altura" name="Altura"
+                       type="text"
+                       inputmode="numeric"
+                       maxlength="10"
+                       placeholder="Ej.: 2840"
                        required />
             </div>
 
@@ -50,14 +94,14 @@
                 <label for="telefono">Teléfono</label>
                 <input id="telefono" name="Telefono"
                        type="tel" autocomplete="tel"
-                       maxlength="30" required />
+                       maxlength="20" required />
             </div>
 
             <div class="tt-field">
                 <label for="correo">Correo electrónico</label>
                 <input id="correo" name="Correo"
                        type="email" autocomplete="email"
-                       maxlength="254"
+                       maxlength="100"
                        placeholder="nombre@correo.com"
                        required />
             </div>
@@ -80,7 +124,7 @@
         </div>
 
         <button class="tt-button tt-button-red tt-register-submit"
-                type="submit" disabled>
+                type="submit">
             Crear cuenta
         </button>
     </form>

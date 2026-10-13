@@ -1,6 +1,6 @@
 CREATE TABLE USUARIO (
   id_usuario INT PRIMARY KEY IDENTITY(1,1),
-  nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
+  nombre_usuario VARCHAR(100) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
   rol VARCHAR(30) NOT NULL CHECK (rol IN ('Paciente', 'Medico', 'Administrativo')),
