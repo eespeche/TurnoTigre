@@ -4,24 +4,38 @@
     ViewData["Title"] = "Iniciar sesión";
 }
 
-<section class="tt-login" aria-label="Iniciar sesión">
+<section class="tt-login" aria-label="Iniciar Sesion">
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success">@TempData["Mensaje"]</div>
+    }
+
+    @if (Model.Error != null)
+    {
+        <div class="alert alert-danger">@Model.Error</div>
+    }
+
     <form method="post">
+
         <div class="tt-field">
-            <label for="correo">Correo electrónico</label>
-            <input id="correo" name="Correo"
+            <label asp-for="Correo">Correo electrónico</label>
+            <input asp-for="Correo"
                    type="email"
                    autocomplete="username"
                    placeholder="nombre@correo.com"
                    required />
+            <span asp-validation-for="Correo" class="text-danger"></span>
         </div>
 
         <div class="tt-field">
-            <label for="contrasena">Contraseña</label>
-            <input id="contrasena" name="Contrasena"
+            <label asp-for="Contrasena">Contraseña</label>
+            <input asp-for="Contrasena"
                    type="password"
                    autocomplete="current-password"
                    placeholder="Ingresá tu contraseña"
                    required />
+            <span asp-validation-for="Contrasena" class="text-danger"></span>
         </div>
 
         <div class="tt-recovery-row">
@@ -34,10 +48,10 @@
         </div>
 
         <button type="submit"
-                class="tt-button tt-button-red tt-login-submit"
-                disabled>
+                class="tt-button tt-button-red tt-login-submit">
             ACEPTAR
         </button>
+
     </form>
 </section>
 
@@ -50,9 +64,10 @@
                 <h2 class="modal-title fs-5" id="recuperarTitulo">
                     Recuperar contraseña
                 </h2>
-                <button type="button" class="btn-close"
+                <button type="button" class="b
                         data-bs-dismiss="modal"
-                        aria-label="Cerrar"></button>
+                        aria-label="Cerrar">
+                    </button>
             </div>
             <div class="modal-body">
                 <label for="correoRecuperacion" class="form-label">
@@ -73,3 +88,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -92,6 +92,7 @@ namespace Web.Pages
                 PacienteNegocio negocio = new PacienteNegocio();
                 negocio.Agregar(paciente, Contrasena);
 
+                TempData["Mensaje"] = "¡Tu cuenta se creó correctamente! Ya podés ingresar.";
                 return RedirectToPage("/Ingresar");
             }
             catch (Exception ex)
