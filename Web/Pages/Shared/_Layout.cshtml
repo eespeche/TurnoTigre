@@ -43,6 +43,11 @@
     </header>
 
     <main class="tt-main tt-container">
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <p>Sesión iniciada: @User.Identity.Name</p>
+        }
+
         @RenderBody()
     </main>
 

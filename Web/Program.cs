@@ -1,6 +1,15 @@
 using AccesoDatos;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Ingresar";
+    });
 
 // Configuramos la cadena de conexión para ConexionDB desde appsettings / variables de entorno
 string? connectionString = builder.Configuration.GetConnectionString("TurnoTigreDB");
@@ -28,7 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

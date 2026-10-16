@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Negocio;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 namespace Web.Pages
 {
@@ -23,7 +26,7 @@ namespace Web.Pages
         {
         }
 
-        public IActionResult OnPost ()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
                 return Page();
@@ -35,7 +38,27 @@ namespace Web.Pages
 
                 if (usuario.Rol == "Paciente")
                 {
-                    //Falta la pagina Index de pacientes
+                    var datosUsuario = new List<Claim>
+                    {
+                        new Claim(
+                            ClaimTypes.NameIdentifier,
+                            usuario.IdUsuario.ToString()),
+
+                        new Claim(ClaimTypes.Name, usuario.Email),
+
+                        new Claim(ClaimTypes.Role, usuario.Rol)
+                    };
+
+                    var identidad = new ClaimsIdentity(
+                        datosUsuario,
+                        CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    var usuarioAutenticado = new ClaimsPrincipal(identidad);
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        usuarioAutenticado);
+
                     return RedirectToPage("/Pacientes/Index");
                 }
 
